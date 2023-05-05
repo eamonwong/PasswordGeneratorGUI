@@ -39,7 +39,16 @@ public class GUI implements ActionListener {
         String specialChars = "`~!@#$%^&*()-_=+:<>/?.,£";
         String combination = lower_cases + upper_cases + num + specialChars;
 
+        // Prompt the user for the desired length of the password
+        String input = JOptionPane.showInputDialog(frame, "Enter the desired length of the password:");
+
+        // convert the input to an integer, defaulting to 8 if it cannot be parsed
         int len = 8;
+        try {
+            len = Integer.parseInt(input);
+        } catch (NumberFormatException ex) {
+            System.out.println("Invalid input, defaulting to 8.");
+        }
 
         char[] password = new char[len];
         Random r = new Random();
@@ -57,5 +66,8 @@ public class GUI implements ActionListener {
         new GUI();
     }
 }
+
+
+
 
 
